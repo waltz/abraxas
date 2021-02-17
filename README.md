@@ -1,3 +1,3 @@
 # Abraxas
 
-A tiny TypeScript chatbot.
+A tiny Go chatbot.
