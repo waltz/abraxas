@@ -1,6 +1,6 @@
 # Abraxas
 
-A tiny Go chatbot.
+A BreedTV media archive bot. It looks for videos posted to Slack and then saves them to Firestore.
 
 ## Building
 
