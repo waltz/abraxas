@@ -1,11 +1,10 @@
-FROM node:12
+FROM golang:1.16
 
-WORKDIR /app
-
+WORKDIR /go/src/app
 COPY . .
 
-RUN npm install
+RUN go get -d -v ./
+RUN go install -v ./
+RUN go build -o abraxas ./
 
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+CMD ["abraxas"]
