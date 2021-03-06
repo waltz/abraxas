@@ -8,4 +8,4 @@ A tiny Go chatbot.
 
 ### Running
 
-```docker run --env-file .env abraxas:latest```
+```docker run --env-file .env -p 3000:3000 abraxas:latest```
