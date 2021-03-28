@@ -38,4 +38,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gcr.io/abraxas/abraxas:latest
+          tags: gcr.io/abraxas-277106/abraxas
