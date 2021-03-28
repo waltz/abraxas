@@ -1,0 +1,41 @@
+name: Presto
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.16
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v ./...
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log in to GCR
+        uses: docker/login-action@v1
+        with:
+          registry: gcr.io
+          username: _json_key
+          password: ${{ secrets.GCR_JSON_KEY }}
+
+      - name: Build and Push
+        uses: docker/build-and-push-action@v2
+        with:
+          push: true
+          tags: waltz/abraxas:latest
