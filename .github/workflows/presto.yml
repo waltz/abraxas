@@ -37,7 +37,7 @@ jobs:
         run: docker build -t abraxas:latest .
 
       - name: Create an Alias Tag
-        run: docker image tag abraxas:latest https://gcr.io/abraxas-277106/abraxas:latest
+        run: docker image tag abraxas:latest gcr.io/abraxas-277106/abraxas:latest
 
       - name: Push the Image
-        run: docker push https://gcr.io/abraxas-277106/abraxas:latest
+        run: docker push gcr.io/abraxas-277106/abraxas:latest
