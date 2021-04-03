@@ -33,9 +33,8 @@ jobs:
       - name: Login to GCR
         run: echo $'${{ secrets.GCR_JSON_KEY }}' | docker login --username _json_key --password-stdin https://gcr.io
 
-      - name: Build and Push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: gcr.io/abraxas-277106/abraxas
+      - name: Build the Image
+        run: docker build -t abraxas:latest .
+
+      - name: Push the Image
+        run: docker push abraxas:latest https://gcr.io/abraxas-277106/abraxas:latest
