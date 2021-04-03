@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Login to GCR
-        run: docker login -u _json_key -p "${{ secrets.GCR_JSON_KEY }}" https://gcr.io
+        run: echo ${{ secrets.GCR_JSON_KEY }} | docker login --username _json_key --password-stdin https://gcr.io
 
       - name: Build and Push
         uses: docker/build-push-action@v2
