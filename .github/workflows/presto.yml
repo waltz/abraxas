@@ -35,6 +35,9 @@ jobs:
       - name: Login to GCR
         run: echo $'${{ secrets.GCR_JSON_KEY }}' | docker login --username _json_key --password-stdin https://gcr.io
 
+      - name: Pull the Old Layers
+        run: docker pull $IMAGE_NAME
+
       - name: Build the Image
         run: docker build -t $IMAGE_NAME .
 
