@@ -3,8 +3,6 @@ name: Presto
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
 
@@ -26,6 +24,10 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
+
+    env:
+      IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/abraxas:latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -34,10 +36,7 @@ jobs:
         run: echo $'${{ secrets.GCR_JSON_KEY }}' | docker login --username _json_key --password-stdin https://gcr.io
 
       - name: Build the Image
-        run: docker build -t abraxas:latest .
-
-      - name: Create an Alias Tag
-        run: docker tag abraxas:latest gcr.io/abraxas-277106/abraxas:latest
+        run: docker build -t $IMAGE_NAME .
 
       - name: Push the Image
-        run: docker push gcr.io/abraxas-277106/abraxas:latest
+        run: docker push $IMAGE_NAME
