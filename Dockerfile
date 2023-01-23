@@ -1,10 +1,10 @@
-FROM golang:1.16
+FROM node:lts
 
-WORKDIR /go/src/app
+RUN mkdir -p /app
+WORKDIR /app
 COPY . .
 
-RUN go get -d -v ./
-RUN go install -v ./
-RUN go build -o abraxas ./
+RUN npm install
+RUN npm run build
 
-CMD ["abraxas"]
+CMD npm run serve

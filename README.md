@@ -1,6 +1,6 @@
 # Abraxas
 
-A BreedTV media archive bot. It looks for videos posted to Slack and then saves them to Firestore.
+A BreedTV media archive bot. It looks for videos posted to Slack and then saves them to Mongo.
 
 ## Building
 
